@@ -15,20 +15,22 @@ class ViewController: UIViewController {
         "Medium" : 420,
         "Hard" : 720
     ]
+    var secondsRemaining = 60
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle! // Soft, Medium, Hard (Optional)
         
-        var secondsToBoil = eggTime[hardness]!
+        secondsRemaining = eggTime[hardness]!
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-            if secondsToBoil > 0 {
-                print ("\(secondsToBoil) seconds.")
-                secondsToBoil -= 1
-            } else {
-                Timer.invalidate()
-            }
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if secondsRemaining > 0 {
+            print("\(secondsRemaining) seconds.")
+            secondsRemaining -= 1
         }
     }
+    
     
 }
