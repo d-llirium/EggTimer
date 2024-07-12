@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class ViewController: UIViewController {
     
@@ -14,15 +15,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     
     let eggTime = [
-        "Soft" : 300,
-        "Medium" : 420,
-        "Hard" : 720
+        "Soft" : 3,
+        "Medium" : 4,
+        "Hard" : 7
     ]
 
     var secondsPast = 1
     var totalTime = 1
     
     var timer = Timer()
+    var player: AVAudioPlayer!
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         timer.invalidate()
@@ -45,8 +47,14 @@ class ViewController: UIViewController {
         } else {
             timer.invalidate()
             titleLabel.text = "Done!"
+            playSound(soundName: "alarm_sound")
         }
     }
     
+    func playSound(soundName: String) {
+        let url = Bundle.main.url(forResource: soundName, withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
     
 }
