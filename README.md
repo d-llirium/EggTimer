@@ -9,6 +9,8 @@ This module will be a mix of tutorials and challenges. Most importantly, we want
 
 You’ll be building a beautiful egg timer app to boil your eggs to perfection depending on how you prefer your eggs. 
 
+![gif title](https://github.com/d-llirium/EggTimer/blob/main/gif.gif?raw=true)
+
 ## What you will learn
 
 * Swift Collection types - Dictionaries
